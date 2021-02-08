@@ -15,13 +15,17 @@ export default function Home({ items }) {
 
       <main className="main">
         <h1 className='title'>Welcome to NASA Images</h1>
-        {photos && photos.map((preview) => (
-          <ImagePreview 
-            key={preview.data[0].nasa_id}
-            thumbnailUrl={preview.links[0].href}
-            nasaId={preview.data[0].nasa_id}
-          />
-        ))}
+        <div className='fade'>
+          <div className='gridContainer'>
+            {photos && photos.map((preview) => (
+              <ImagePreview 
+              key={preview.data[0].nasa_id}
+              thumbnailUrl={preview.links[0].href}
+              nasaId={preview.data[0].nasa_id}
+              />
+              ))}
+          </div>
+        </div>
       </main>
     </div>
   )
