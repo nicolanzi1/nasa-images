@@ -10,7 +10,7 @@ const photo = ({ photo }) => {
 
     return (
         <div>
-            <div>
+            <div className='imageContainer'>
                 {router.isFallback ? (
                     <div>Loading...</div>
                 ) : (
@@ -19,10 +19,10 @@ const photo = ({ photo }) => {
                     </>
                 )}
             </div>
-            <div>
+            <div className='imageContainer'>
                 <Link href='/'>
                     <a>
-                        <button>Go Back</button>
+                        <button className='btn'>Go Back</button>
                     </a>
                 </Link>
             </div>
@@ -49,7 +49,7 @@ export async function getStaticPaths() {
         paths:
         items?.map((nasa) => ({
             params: {
-                id: nasa.data[0].nasa_id,
+                id: nasa.data[0].nasa_id
             }
         })) || [],
         fallback: true,

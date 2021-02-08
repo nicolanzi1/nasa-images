@@ -7,7 +7,7 @@ const ImagePreview = ({ thumbnailUrl, nasaId }) => {
             <Link as={`/photo/${nasaId}`} href='/photo/[id]'>
                 <a>
                     <Image width={250} height={125} src={thumbnailUrl} />
-                    <div>Nasa ID: {nasaId}</div>
+                    <p>Nasa ID: {nasaId}</p>
                 </a>
             </Link> 
         </div>
