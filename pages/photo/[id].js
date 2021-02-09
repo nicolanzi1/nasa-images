@@ -12,7 +12,7 @@ const photo = ({ photo }) => {
         <div>
             <div className='imageContainer'>
                 {router.isFallback ? (
-                    <div>Loading...</div>
+                    <div class="lds-hourglass">Loading...</div>
                 ) : (
                     <>
                         <Image width={960} priority height={540} src={photo} />

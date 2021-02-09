@@ -4,7 +4,7 @@ import ImagePreview from '../components/ImagePreview'
 
 export default function Home({ items }) {
   const [search, setSearch] = useState('')
- const [photos, setPhotos] = useState(items)
+  const [photos, setPhotos] = useState(items)
 
   return (
     <div className="container">
@@ -33,9 +33,11 @@ export default function Home({ items }) {
           <div className='gridContainer'>
             {photos && photos.map((preview) => (
               <ImagePreview 
-              key={preview.data[0].nasa_id}
-              thumbnailUrl={preview.links[0].href}
-              nasaId={preview.data[0].nasa_id}
+                key={preview.data[0].nasa_id}
+                thumbnailUrl={preview.links[0].href}
+                nasaId={preview.data[0].nasa_id}
+                title={preview.data[0].title}
+                desc={preview.data[0].description}
               />
               ))}
           </div>
