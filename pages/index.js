@@ -1,10 +1,21 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import ImagePreview from '../components/ImagePreview'
+import Pagination from '../components/Pagination'
 
 export default function Home({ items }) {
   const [search, setSearch] = useState('')
   const [photos, setPhotos] = useState(items)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [photosPerPage] = useState(9)
+
+  // Get current photos
+  const indexOfLastPhoto = currentPage * photosPerPage
+  const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage
+  const currentPhotos = photos.slice(indexOfFirstPhoto, indexOfLastPhoto)
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
     <div className="container">
@@ -31,7 +42,7 @@ export default function Home({ items }) {
         }>Search</button>
         <div className='fade'>
           <div className='gridContainer'>
-            {photos && photos.map((preview) => (
+            {currentPhotos && currentPhotos.map((preview) => (
               <ImagePreview 
                 key={preview.data[0].nasa_id}
                 thumbnailUrl={preview.links[0].href}
@@ -42,6 +53,7 @@ export default function Home({ items }) {
               ))}
           </div>
         </div>
+        <Pagination photosPerPage={photosPerPage} totalPhotos={photos.length} paginate={paginate} />
       </main>
     </div>
   )
